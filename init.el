@@ -4,3 +4,5 @@
 
 (require 'init-packages)
 (require 'init-face)
+(require 'init-keybind)
+(require 'init-etc)
