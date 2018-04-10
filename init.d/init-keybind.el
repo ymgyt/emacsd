@@ -13,5 +13,10 @@
 ;; save buffer
 (define-key global-map (kbd "C-;") 'save-buffer)
 
+;; window undo
+(winner-mode)
+(global-set-key (kbd "C-z") 'winner-undo)
+(global-set-key (kbd "C-M-z") 'winner-redo)
+
 
 (provide 'init-keybind)

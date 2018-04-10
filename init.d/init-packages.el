@@ -15,21 +15,23 @@
 (load custom-file)
 
 (defvar installing-package-list
-  '(go-mode
-    go-eldoc
+  '(
+    ace-jump-mode
+    ace-window
+    all-the-icons
     company
     company-go
     flycheck
     flycheck-gometalinter
-    yasnippet
-    shackle
-    ace-jump-mode
-    ace-window
-    neotree
+    go-eldoc
+    go-mode
     helm
+    magit
+    neotree
     nlinum
-    all-the-icons
-    solarized-theme))
+    shackle
+    solarized-theme
+    yasnippet))
 
 (let ((not-installed (loop for x in installing-package-list
 			   when (not (package-installed-p x))
@@ -66,6 +68,8 @@
         ("*helm mini*" :align below :ratio 0.7)
         ;; 他のhelmコマンドは右側に表示 (バッファ名の正規表現マッチ)
         ("\*helm" :regexp t :align right)
+        ;; magit-status
+        ("magit: *" :regexp t :align 'below :size 0.3)
         ;; 上部に表示
         ("foo" :align above)
         ;; 別フレームで表示
@@ -79,6 +83,9 @@
         ))
 (shackle-mode 1)
 (setq shackle-lighter "")
+
+;; magit
+(global-set-key (kbd "C-c m s") 'magit-status)
 
 ;; company
 (global-company-mode)

@@ -28,5 +28,7 @@
 ;; load modified file
 (global-auto-revert-mode t)
 
+;; 日本語入力時のちらつき防止
+(setq redisplay-dont-pause nil)
 
 (provide 'init-etc)
