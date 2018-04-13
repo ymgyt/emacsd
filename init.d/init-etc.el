@@ -25,6 +25,8 @@
 ;; disable auto-save-list directory automatically created
 (setq auto-save-list-file-prefix nil)
 
+;; disable lock file
+(setq create-lockfiles nil)
 ;; load modified file
 (global-auto-revert-mode t)
 

@@ -27,10 +27,13 @@
     go-mode
     helm
     magit
+    magit-gh-pulls
+    multi-term
     neotree
     nlinum
     shackle
     solarized-theme
+    terraform-mode
     yasnippet))
 
 (let ((not-installed (loop for x in installing-package-list
@@ -67,9 +70,9 @@
         ;; M-x helm-miniは下部に7割の大きさで表示
         ("*helm mini*" :align below :ratio 0.7)
         ;; 他のhelmコマンドは右側に表示 (バッファ名の正規表現マッチ)
-        ("\*helm" :regexp t :align right)
+        ("\*helm" :regexp t :align 'below)
         ;; magit-status
-        ("magit: *" :regexp t :align 'below :size 0.3)
+        ("magit: *" :regexp t :align 'below :size 0.4)
         ;; 上部に表示
         ("foo" :align above)
         ;; 別フレームで表示
@@ -86,6 +89,9 @@
 
 ;; magit
 (global-set-key (kbd "C-c m s") 'magit-status)
+
+;; magit-gh-pulls
+(add-hook 'magit-mode-hook 'turn-on-magit-gh-pulls)
 
 ;; company
 (global-company-mode)
@@ -120,11 +126,11 @@
 
   ;; flycheck
   (flycheck-gometalinter-setup)
-  (setq flycheck-gometalinter-fast t)
+  (setq flycheck-gometalinter-fast nil)
   (setq flycheck-gometalinter-test t)
   (setq flycheck-gometalinter-vendor t)
   (setq flycheck-gometalinter-errors-only t)
-  (setq flycheck-gometalinter-deadline "10s"))
+  (setq flycheck-gometalinter-deadline "300s"))
 
 (add-hook 'go-mode-hook 'my-go-mode-hook)
 (add-hook 'go-mode-hook 'flycheck-mode)
@@ -141,4 +147,6 @@
 ;; nlinum
 (global-nlinum-mode t)
 
+;; multi-term
+(setq multi-term-program "/bin/zsh")
 (provide 'init-packages)		       
