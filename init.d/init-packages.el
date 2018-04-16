@@ -16,7 +16,7 @@
 
 (defvar installing-package-list
   '(
-    ace-jump-mode
+    avy
     ace-window
     all-the-icons
     company
@@ -45,10 +45,14 @@
       (package-install pkg))))
 
 ;; ace-jump
-(setq ace-jump-mode-gray-background nil)
-(setq ace-jump-word-mode-use-query-char nil)
-(define-key global-map (kbd "C-j") 'ace-jump-mode)
+;;(setq ace-jump-mode-gray-background nil)
+;;(setq ace-jump-word-mode-use-query-char nil)
+;;(define-key global-map (kbd "C-j") 'ace-jump-mode)
 
+;; avy
+(global-set-key (kbd "C-j") 'avy-goto-char)
+(global-set-key (kbd "C-M-j") 'avy-goto-char-2)
+(global-set-key (kbd "C-M-;") 'avy-goto-char-timer)
 ;; ace-window
 (define-key global-map (kbd "C-'") 'ace-window)
 
@@ -126,7 +130,7 @@
 
   ;; flycheck
   (flycheck-gometalinter-setup)
-  (setq flycheck-gometalinter-fast nil)
+  (setq flycheck-gometalinter-fast t)
   (setq flycheck-gometalinter-test t)
   (setq flycheck-gometalinter-vendor t)
   (setq flycheck-gometalinter-errors-only t)
