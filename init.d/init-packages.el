@@ -26,14 +26,19 @@
     go-eldoc
     go-mode
     helm
+    helm-projectile
     magit
     magit-gh-pulls
     multi-term
     neotree
     nlinum
+    powerline
+    projectile
+    rainbow-delimiters
     shackle
     solarized-theme
     terraform-mode
+    which-key
     yasnippet))
 
 (let ((not-installed (loop for x in installing-package-list
@@ -43,6 +48,15 @@
     (package-refresh-contents)
     (dolist (pkg not-installed)
       (package-install pkg))))
+
+;; alpha
+;; 透過
+(defun set-alpha (alpha-num)
+  "set frame parameter 'alpha"
+  (interactive "nAlpha: ")
+  (set-frame-parameter nil 'alpha (cons alpha-num '(90))))
+;; 初期値
+(set-frame-parameter nil 'alpha 97)
 
 ;; ace-jump
 ;;(setq ace-jump-mode-gray-background nil)
@@ -129,12 +143,14 @@
   (go-eldoc-setup)
 
   ;; flycheck
+  (setq flycheck-check-syntax-automatically '(mode-enabled save))
   (flycheck-gometalinter-setup)
   (setq flycheck-gometalinter-fast t)
   (setq flycheck-gometalinter-test t)
   (setq flycheck-gometalinter-vendor t)
   (setq flycheck-gometalinter-errors-only t)
-  (setq flycheck-gometalinter-deadline "300s"))
+  (setq flycheck-gometalinter-disable-linters '("megacheck"))
+  (setq flycheck-gometalinter-deadline "5s"))
 
 (add-hook 'go-mode-hook 'my-go-mode-hook)
 (add-hook 'go-mode-hook 'flycheck-mode)
@@ -148,9 +164,27 @@
 (define-key global-map (kbd "C-x C-f") 'helm-find-files)
 (define-key global-map (kbd "C-x C-r") 'helm-recentf)
 
+;; projectile
+(projectile-global-mode)
+(setq projectile-completion-system 'helm)
+(helm-projectile-on)
+
+;; powerline
+(powerline-default-theme)
+
 ;; nlinum
 (global-nlinum-mode t)
 
 ;; multi-term
 (setq multi-term-program "/bin/zsh")
+
+
+;; which-key
+;; show on mini buffer
+(which-key-setup-side-window-bottom)
+(which-key-mode 1)
+
+;;rainbow-delimiters
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+
 (provide 'init-packages)		       

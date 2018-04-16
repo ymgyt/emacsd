@@ -2,3 +2,5 @@ network-security.data
 elpa/
 *~
 recentf
+projectile-bookmarks.eld
+var/
