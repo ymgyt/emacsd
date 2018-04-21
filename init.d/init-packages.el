@@ -32,6 +32,8 @@
     multi-term
     neotree
     nlinum
+    persistent-scratch
+    perspeen
     powerline
     projectile
     rainbow-delimiters
@@ -39,7 +41,9 @@
     solarized-theme
     terraform-mode
     which-key
-    yasnippet))
+    yaml-mode
+    yasnippet
+    zop-to-char))
 
 (let ((not-installed (loop for x in installing-package-list
 			   when (not (package-installed-p x))
@@ -63,8 +67,7 @@
 ;;(setq ace-jump-word-mode-use-query-char nil)
 ;;(define-key global-map (kbd "C-j") 'ace-jump-mode)
 
-;; avy
-(global-set-key (kbd "C-j") 'avy-goto-char)
+;; avy(global-set-key (kbd "C-j") 'avy-goto-char)
 (global-set-key (kbd "C-M-j") 'avy-goto-char-2)
 (global-set-key (kbd "C-M-;") 'avy-goto-char-timer)
 ;; ace-window
@@ -168,6 +171,7 @@
 (projectile-global-mode)
 (setq projectile-completion-system 'helm)
 (helm-projectile-on)
+(global-relative-buffers-mode)
 
 ;; powerline
 (powerline-default-theme)
@@ -184,7 +188,22 @@
 (which-key-setup-side-window-bottom)
 (which-key-mode 1)
 
-;;rainbow-delimiters
+;; rainbow-delimiters
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
+;; yaml-mode
+(add-to-list 'auto-mode-alist '("\\.ya?ml$" . yaml-mode))
+
+;; persistent-scratch
+(persistent-scratch-setup-default)
+
+;; perspeen
+(setq perspeen-keymap-prefix (kbd "C-c w"))
+(global-set-key (kbd "<C-tab>") 'perspeen-next-ws)
+(global-set-key (kbd "<C-S-tab>") 'perspeen-previous-ws)
+(perspeen-mode)
+
+;; zop-to-char
+;; upは指定文字の直前まで消す
+(global-set-key (kbd "M-z") 'zop-up-to-char)
 (provide 'init-packages)		       

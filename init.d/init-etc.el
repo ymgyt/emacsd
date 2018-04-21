@@ -33,4 +33,8 @@
 ;; 日本語入力時のちらつき防止
 (setq redisplay-dont-pause nil)
 
+;; shell script
+(setq sh-basic-offset 2)
+(setq sh-indentation 2)
+
 (provide 'init-etc)
