@@ -16,6 +16,7 @@
 
 (defvar installing-package-list
   '(
+    apib-mode
     avy
     ace-window
     all-the-icons
@@ -23,10 +24,13 @@
     company-go
     flycheck
     flycheck-gometalinter
+    git-gutter
     go-eldoc
     go-mode
+    gotest
     helm
     helm-projectile
+    markdown-mode
     magit
     magit-gh-pulls
     multi-term
@@ -53,6 +57,10 @@
     (dolist (pkg not-installed)
       (package-install pkg))))
 
+;; api blue print mode
+;; https://github.com/w-vi/apib-mode に依存している
+(add-to-list 'auto-mode-alist '("\\.apib\\'" . apib-mode))
+
 ;; alpha
 ;; 透過
 (defun set-alpha (alpha-num)
@@ -73,6 +81,10 @@
 ;; ace-window
 (define-key global-map (kbd "C-'") 'ace-window)
 
+;;git-gutter
+(global-git-gutter-mode t)
+(define-key global-map (kbd "C-x n") 'git-gutter:next-hunk)
+(define-key global-map (kbd "C-x p") 'git-gutter:previous-hunk)
 
 ;;neotree
 (setq neo-persist-show t)
@@ -93,7 +105,7 @@
         ;; 他のhelmコマンドは右側に表示 (バッファ名の正規表現マッチ)
         ("\*helm" :regexp t :align 'below)
         ;; magit-status
-        ("magit: *" :regexp t :align 'below :size 0.4)
+        ("magit: *" :regexp t :align 'below :size 0.5)
         ;; 上部に表示
         ("foo" :align above)
         ;; 別フレームで表示
@@ -110,9 +122,12 @@
 
 ;; magit
 (global-set-key (kbd "C-c m s") 'magit-status)
+;; performance
+(setq magit-commit-show-diff nil)
+(setq magit-rever-buffers 1)
 
 ;; magit-gh-pulls
-(add-hook 'magit-mode-hook 'turn-on-magit-gh-pulls)
+;;(add-hook 'magit-mode-hook 'turn-on-magit-gh-pulls)
 
 ;; company
 (global-company-mode)
@@ -157,6 +172,12 @@
 
 (add-hook 'go-mode-hook 'my-go-mode-hook)
 (add-hook 'go-mode-hook 'flycheck-mode)
+
+;; gotest
+(require 'gotest)
+(setq go-test-verbose t)
+(define-key go-mode-map (kbd "C-c C-t") 'go-test-current-file)
+(define-key go-mode-map (kbd "C-c t") 'go-test-current-test)
 
 ;; helm
 (require 'helm-config)
@@ -206,4 +227,7 @@
 ;; zop-to-char
 ;; upは指定文字の直前まで消す
 (global-set-key (kbd "M-z") 'zop-up-to-char)
+
+;;markdown
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 (provide 'init-packages)		       

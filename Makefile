@@ -1,5 +1,7 @@
 .PHONY: init
 init: init-go
+	brew install --HEAD bhttps://raw.github.com/apiaryio/drafter/master/tools/homebrew/drafter.rb
+	brew install markdown
 
 .PHONY: init-go
 init-go:
