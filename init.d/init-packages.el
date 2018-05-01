@@ -75,7 +75,8 @@
 ;;(setq ace-jump-word-mode-use-query-char nil)
 ;;(define-key global-map (kbd "C-j") 'ace-jump-mode)
 
-;; avy(global-set-key (kbd "C-j") 'avy-goto-char)
+;; avy
+(global-set-key (kbd "C-j") 'avy-goto-char)
 (global-set-key (kbd "C-M-j") 'avy-goto-char-2)
 (global-set-key (kbd "C-M-;") 'avy-goto-char-timer)
 ;; ace-window
