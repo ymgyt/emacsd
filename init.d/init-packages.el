@@ -30,6 +30,7 @@
     gotest
     helm
     helm-projectile
+    helm-c-moccur
     markdown-mode
     magit
     magit-gh-pulls
@@ -44,6 +45,7 @@
     shackle
     solarized-theme
     terraform-mode
+    undo-tree
     which-key
     yaml-mode
     yasnippet
@@ -75,7 +77,8 @@
 ;;(setq ace-jump-word-mode-use-query-char nil)
 ;;(define-key global-map (kbd "C-j") 'ace-jump-mode)
 
-;; avy(global-set-key (kbd "C-j") 'avy-goto-char)
+;; avy
+(global-set-key (kbd "C-j") 'avy-goto-char)
 (global-set-key (kbd "C-M-j") 'avy-goto-char-2)
 (global-set-key (kbd "C-M-;") 'avy-goto-char-timer)
 ;; ace-window
@@ -83,6 +86,8 @@
 
 ;;git-gutter
 (global-git-gutter-mode t)
+(global-linum-mode)
+(git-gutter:linum-setup)
 (define-key global-map (kbd "C-x n") 'git-gutter:next-hunk)
 (define-key global-map (kbd "C-x p") 'git-gutter:previous-hunk)
 
@@ -183,22 +188,30 @@
 (require 'helm-config)
 (helm-mode 1)
 
-(define-key global-map (kbd "C-x b")   'helm-buffers-list)
+(define-key global-map (kbd "C-x C-b") 'helm-buffers-list)
 (define-key global-map (kbd "M-x")     'helm-M-x)
 (define-key global-map (kbd "C-x C-f") 'helm-find-files)
 (define-key global-map (kbd "C-x C-r") 'helm-recentf)
 
+;; helm-occur
+(define-key global-map (kbd "C-M-o") 'helm-occur)
+
 ;; projectile
 (projectile-global-mode)
 (setq projectile-completion-system 'helm)
+(setq projectile-enable-caching t)
+(add-to-list
+ 'projectile-globally-ignored-directories
+ "node_modules"
+ "vendor")
+
 (helm-projectile-on)
-(global-relative-buffers-mode)
 
 ;; powerline
 (powerline-default-theme)
 
 ;; nlinum
-(global-nlinum-mode t)
+;;(global-nlinum-mode t)
 
 ;; multi-term
 (setq multi-term-program "/bin/zsh")
@@ -230,4 +243,10 @@
 
 ;;markdown
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+;; undo-tree
+;; C-x u でvisualize
+(define-key global-map (kbd "C-.") 'undo-tree-redo)
+(global-undo-tree-mode t)
+
 (provide 'init-packages)		       

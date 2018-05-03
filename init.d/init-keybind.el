@@ -18,5 +18,11 @@
 (global-set-key (kbd "C-z") 'winner-undo)
 (global-set-key (kbd "C-M-z") 'winner-redo)
 
+;; move window
+(define-key global-map (kbd "C-t") 'other-window)
+
+;; show kill ring
+(define-key global-map (kbd "M-y") 'helm-show-kill-ring)
+
 
 (provide 'init-keybind)
