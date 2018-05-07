@@ -18,5 +18,8 @@
 (global-set-key (kbd "C-z") 'winner-undo)
 (global-set-key (kbd "C-M-z") 'winner-redo)
 
+;; rotate window
+(global-set-key (kbd "C-t") 'other-window)
+
 
 (provide 'init-keybind)
