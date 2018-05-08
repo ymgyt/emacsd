@@ -44,6 +44,7 @@
     shackle
     solarized-theme
     terraform-mode
+    undo-tree
     which-key
     yaml-mode
     yasnippet
@@ -231,4 +232,10 @@
 
 ;;markdown
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+;; undo-tree
+;; <C-x u> でui表示 qでquit, dでdiff, <C-f> でbranch切り替え
+(global-undo-tree-mode t)
+(global-set-key (kbd "C-.") 'undo-tree-redo)
+
 (provide 'init-packages)		       

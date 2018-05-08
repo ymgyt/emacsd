@@ -5,7 +5,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (git-gutter markdown+ gotest markdown-mode+ apib-mode relative-buffers persistent-scratch yaml-mode perspeen zop-to-char railbow-delimiters rainbow-delimiters powerline go-projectile projectile which-key multi-term magit-gh-pulls gometalinter magit smartparens hlinum ace-window all-the-icons neotree shackle go-eldoc exec-path-from-shell company go-mode nlinum solarized-theme helm))))
+    (undo-tree git-gutter markdown+ gotest markdown-mode+ apib-mode relative-buffers persistent-scratch yaml-mode perspeen zop-to-char railbow-delimiters rainbow-delimiters powerline go-projectile projectile which-key multi-term magit-gh-pulls gometalinter magit smartparens hlinum ace-window all-the-icons neotree shackle go-eldoc exec-path-from-shell company go-mode nlinum solarized-theme helm))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
