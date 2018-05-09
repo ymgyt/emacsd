@@ -87,6 +87,7 @@
 (global-git-gutter-mode t)
 (define-key global-map (kbd "C-x n") 'git-gutter:next-hunk)
 (define-key global-map (kbd "C-x p") 'git-gutter:previous-hunk)
+(git-gutter:linum-setup)
 
 ;;neotree
 (setq neo-persist-show t)
