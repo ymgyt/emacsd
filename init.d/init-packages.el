@@ -21,14 +21,17 @@
     ace-window
     all-the-icons
     company
+    company-c-headers
     company-go
     flycheck
     flycheck-gometalinter
     git-gutter
+    google-c-style
     go-eldoc
     go-mode
     gotest
     helm
+    helm-gtags
     helm-projectile
     helm-c-moccur
     markdown-mode
@@ -246,14 +249,8 @@
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
 ;; undo-tree
-<<<<<<< HEAD
-;; C-x u でvisualize
-(define-key global-map (kbd "C-.") 'undo-tree-redo)
-(global-undo-tree-mode t)
-=======
 ;; <C-x u> でui表示 qでquit, dでdiff, <C-f> でbranch切り替え
 (global-undo-tree-mode t)
 (global-set-key (kbd "C-.") 'undo-tree-redo)
->>>>>>> 0f0153fc13d3f8d0abc0f1d3a81d07827d45a8a6
 
 (provide 'init-packages)		       

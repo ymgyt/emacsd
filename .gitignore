@@ -6,3 +6,4 @@ projectile-bookmarks.eld
 var/
 .persistent-scratch
 projectile.cache
+custom.el

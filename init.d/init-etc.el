@@ -7,6 +7,9 @@
 ;; indent by space
 (setq-default indent-tabs-mode nil)
 
+;; indent
+(electric-indent-mode)
+
 ;; show paren
 (setq show-paren-mode-delay 0)
 (show-paren-mode t)
@@ -52,5 +55,9 @@
 ;; 短形編集
 (cua-mode t)
 (setq cua-enable-cua-keys nil)
+
+;; font
+;;(add-to-list 'default-frame-alist '(font . "MigMix 1M Bold"))
+
 
 (provide 'init-etc)

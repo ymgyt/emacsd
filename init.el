@@ -12,3 +12,4 @@
 (require 'init-snippet)
 (require 'init-etc)
 (require 'init-javascript)
+(require 'init-clang)
