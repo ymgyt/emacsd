@@ -108,7 +108,7 @@
         ;; 他のhelmコマンドは右側に表示 (バッファ名の正規表現マッチ)
         ("\*helm" :regexp t :align 'below)
         ;; magit-status
-        ("magit: *" :regexp t :align 'below :size 0.5)
+        ("magit: *" :regexp t :same t)
         ;; 上部に表示
         ("foo" :align above)
         ;; 別フレームで表示

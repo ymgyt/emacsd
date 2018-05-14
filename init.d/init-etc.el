@@ -37,6 +37,10 @@
 (setq sh-basic-offset 2)
 (setq sh-indentation 2)
 
+
+;; js
+(setq js-indent-level 2)
+
 ;; scroll
 (setq scroll-conservatively 1)
 
