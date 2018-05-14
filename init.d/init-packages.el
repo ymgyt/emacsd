@@ -21,15 +21,19 @@
     ace-window
     all-the-icons
     company
+    company-c-headers
     company-go
     flycheck
     flycheck-gometalinter
     git-gutter
+    google-c-style
     go-eldoc
     go-mode
     gotest
     helm
+    helm-gtags
     helm-projectile
+    helm-c-moccur
     markdown-mode
     magit
     magit-gh-pulls
@@ -85,6 +89,8 @@
 
 ;;git-gutter
 (global-git-gutter-mode t)
+(global-linum-mode)
+(git-gutter:linum-setup)
 (define-key global-map (kbd "C-x n") 'git-gutter:next-hunk)
 (define-key global-map (kbd "C-x p") 'git-gutter:previous-hunk)
 (git-gutter:linum-setup)
@@ -186,22 +192,30 @@
 (require 'helm-config)
 (helm-mode 1)
 
-(define-key global-map (kbd "C-x b")   'helm-buffers-list)
+(define-key global-map (kbd "C-x C-b") 'helm-buffers-list)
 (define-key global-map (kbd "M-x")     'helm-M-x)
 (define-key global-map (kbd "C-x C-f") 'helm-find-files)
 (define-key global-map (kbd "C-x C-r") 'helm-recentf)
 
+;; helm-occur
+(define-key global-map (kbd "C-M-o") 'helm-occur)
+
 ;; projectile
 (projectile-global-mode)
 (setq projectile-completion-system 'helm)
+(setq projectile-enable-caching t)
+(add-to-list
+ 'projectile-globally-ignored-directories
+ "node_modules"
+ "vendor")
+
 (helm-projectile-on)
-(global-relative-buffers-mode)
 
 ;; powerline
 (powerline-default-theme)
 
 ;; nlinum
-(global-nlinum-mode t)
+;;(global-nlinum-mode t)
 
 ;; multi-term
 (setq multi-term-program "/bin/zsh")

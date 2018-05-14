@@ -7,6 +7,9 @@
 ;; indent by space
 (setq-default indent-tabs-mode nil)
 
+;; indent
+(electric-indent-mode)
+
 ;; show paren
 (setq show-paren-mode-delay 0)
 (show-paren-mode t)
@@ -43,5 +46,22 @@
 
 ;; scroll
 (setq scroll-conservatively 1)
+
+;; high-light current line
+(global-hl-line-mode)
+
+;; 自動で変更を読み込む
+(global-auto-revert-mode t)
+
+;; shbangがあれば実行権限を付与
+(add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
+
+;; 短形編集
+(cua-mode t)
+(setq cua-enable-cua-keys nil)
+
+;; font
+;;(add-to-list 'default-frame-alist '(font . "MigMix 1M Bold"))
+
 
 (provide 'init-etc)
