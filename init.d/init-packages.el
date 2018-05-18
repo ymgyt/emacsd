@@ -27,6 +27,7 @@
     flycheck-gometalinter
     git-gutter
     google-c-style
+    go-direx
     go-eldoc
     go-mode
     gotest
@@ -115,6 +116,8 @@
         ("\*helm" :regexp t :align 'below)
         ;; magit-status
         ("magit: *" :regexp t :same t)
+        ;; go-direx
+        ("\*go-direx:" :regexp t :popup t)
         ;; 上部に表示
         ("foo" :align above)
         ;; 別フレームで表示
@@ -177,7 +180,12 @@
   (setq flycheck-gometalinter-vendor t)
   (setq flycheck-gometalinter-errors-only t)
   (setq flycheck-gometalinter-disable-linters '("megacheck"))
-  (setq flycheck-gometalinter-deadline "5s"))
+  (setq flycheck-gometalinter-deadline "5s")
+  ;; go-direx
+  (define-key go-mode-map (kbd "C-c C-d") 'go-direx-pop-to-buffer)
+  )
+
+
 
 (add-hook 'go-mode-hook 'my-go-mode-hook)
 (add-hook 'go-mode-hook 'flycheck-mode)
