@@ -36,7 +36,7 @@
 ;; 日本語入力時のちらつき防止
 (setq redisplay-dont-pause nil)
 
-;; shell script
+
 (setq sh-basic-offset 2)
 (setq sh-indentation 2)
 
@@ -60,8 +60,19 @@
 (cua-mode t)
 (setq cua-enable-cua-keys nil)
 
-;; font
-;;(add-to-list 'default-frame-alist '(font . "MigMix 1M Bold"))
+;; save cursol position
+(save-place-mode 1)
 
+;; beacon
+(beacon-mode 1)
+
+;; comment
+(global-set-key (kbd "M-;") 'comment-dwim-2)
+
+;; maximize window size
+(add-hook 'window-setup-hook 'maximize-frame t)
+
+;; yes or no -> y/n
+(defalias 'yes-or-no-p 'y-or-n-p)
 
 (provide 'init-etc)

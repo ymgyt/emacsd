@@ -1,5 +1,6 @@
 '(require 'package)
-(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+(setq package-archives '(
+             ("gnu" . "http://elpa.gnu.org/packages/")
 			 ("marmalade" . "http://marmalade-repo.org/packages/")
 			 ("melpa" . "http://melpa.org/packages/")))
 
@@ -20,9 +21,14 @@
     avy
     ace-window
     all-the-icons
+    beacon
+    comment-dwim-2
     company
     company-c-headers
     company-go
+    easy-kill
+    expand-line
+    expand-region
     flycheck
     flycheck-gometalinter
     git-gutter
@@ -32,12 +38,14 @@
     go-mode
     gotest
     helm
+    helm-bm
     helm-gtags
     helm-projectile
     helm-c-moccur
     markdown-mode
     magit
     magit-gh-pulls
+    maxframe
     multi-term
     neotree
     nlinum
@@ -222,12 +230,8 @@
 ;; powerline
 (powerline-default-theme)
 
-;; nlinum
-;;(global-nlinum-mode t)
-
 ;; multi-term
 (setq multi-term-program "/bin/zsh")
-
 
 ;; which-key
 ;; show on mini buffer
@@ -259,6 +263,17 @@
 ;; undo-tree
 ;; <C-x u> でui表示 qでquit, dでdiff, <C-f> でbranch切り替え
 (global-undo-tree-mode t)
-(global-set-key (kbd "C-.") 'undo-tree-redo)
+(global-set-key (kbd "M-.") 'undo-tree-redo)
+
+;; expand region
+(global-set-key (kbd "C-M-SPC") 'er/expand-region)
+
+;; expand line
+(global-set-key (kbd "C-c e") 'turn-on-expand-line-mode)
+
+;; easy-kill
+;; M-w で現在行をcopy
+;; M-w w でwordをcopy
+(global-set-key (kbd "M-w") 'easy-kill)
 
 (provide 'init-packages)		       

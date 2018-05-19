@@ -7,3 +7,4 @@ var/
 .persistent-scratch
 projectile.cache
 custom.el
+places
