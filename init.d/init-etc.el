@@ -75,4 +75,20 @@
 ;; yes or no -> y/n
 (defalias 'yes-or-no-p 'y-or-n-p)
 
+;; aspell
+(setq-default
+ ispell-program-name "aspell"
+ ispell-extra-args '("--sug-mode=ultra" "--lang=en_US" "--run-together" "--run-together-limit=5" "--run-together-min=2"))
+
+(eval-after-load "ispell"
+  '(add-to-list 'ispell-skip-region-alist '("[^\000-\377]+")))
+
+
+;; flyspell
+(setq flyspell-issue-message-flag nil)
+;; flyspellのkeybindを無効にしておく
+(eval-after-load "flyspell"
+  '(define-key flyspell-mode-map (kbd "C-;") nil))
+
+
 (provide 'init-etc)
