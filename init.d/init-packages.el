@@ -194,9 +194,9 @@
   )
 
 
-
 (add-hook 'go-mode-hook 'my-go-mode-hook)
 (add-hook 'go-mode-hook 'flycheck-mode)
+(add-hook 'go-mode-hook 'flyspell-prog-mode)
 
 ;; gotest
 (require 'gotest)

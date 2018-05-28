@@ -75,4 +75,10 @@
 ;; yes or no -> y/n
 (defalias 'yes-or-no-p 'y-or-n-p)
 
+;; aspell
+(setq-default ispell-program-name "aspell")
+(eval-after-load "ispell"
+  '(add-to-list 'ispell-skip-region-alist '("[^\000-\377]+")))
+(setq flyspell-issue-message-flag nil)
+
 (provide 'init-etc)
