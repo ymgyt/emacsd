@@ -26,6 +26,7 @@
     company
     company-c-headers
     company-go
+    direnv
     easy-kill
     expand-line
     expand-region
@@ -276,5 +277,9 @@
 ;; M-w で現在行をcopy
 ;; M-w w でwordをcopy
 (global-set-key (kbd "M-w") 'easy-kill)
+
+;;direnv
+(direnv-mode)
+(setq direnv-always-show-summary t)
 
 (provide 'init-packages)		       
