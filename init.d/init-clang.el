@@ -1,6 +1,4 @@
 ;; imenu
-;;(setq-local imenu-create-index-function #'ggtags-build-imenu-index)
-
 (require 'cc-mode)
 
 (add-hook 'c-mode-common-hook
@@ -8,7 +6,12 @@
             (setq c-default-style "k&r")
             (setq indent-tabs-mode nil)
             (setq c-basic-offset 2)
-            (c-toggle-auto-state 1)
+            (c-toggle-auto-state nil)
+            (c-toggle-auto-hungry-state 1)
+            (define-key c-mode-map (kbd "C-c c") 'compile)
+            (setq eldoc-idle-delay 0.7)
+            (setq eldoc-echo-area-use-multiline-p t)
+            (c-turn-on-eldoc-mode)
             ))
 
 (add-hook 'c-mode-common-hook 'flycheck-mode)
@@ -20,7 +23,8 @@
 ;; gtags
 (add-hook 'c-mode-hook 'helm-gtags-mode)
 (custom-set-variables
- '(helm-gtags-auto-update t))
+ '(helm-gtags-auto-update t)
+ '(helm-gtags-prefix-key "\C-g"))
 
 (add-hook 'helm-gtags-mode-hook
           '(lambda ()

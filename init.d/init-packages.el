@@ -269,7 +269,6 @@
 
 ;; expand region
 (global-set-key (kbd "C-M-SPC") 'er/expand-region)
-
 ;; expand line
 (global-set-key (kbd "C-c e") 'turn-on-expand-line-mode)
 
