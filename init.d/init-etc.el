@@ -15,7 +15,11 @@
 (show-paren-mode t)
 
 ;; autoclose
-(electric-pair-mode 1)
+;;(electric-pair-mode 0)
+;; smartparens
+(smartparens-global-mode)
+(ad-disable-advice 'delete-backward-char 'before 'sp-delete-pair-advice)
+
 
 (setq kill-whole-line t)
 

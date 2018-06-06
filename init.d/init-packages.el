@@ -57,6 +57,7 @@
     projectile
     rainbow-delimiters
     shackle
+    smartparens
     solarized-theme
     terraform-mode
     undo-tree
