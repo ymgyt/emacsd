@@ -18,7 +18,7 @@
 (add-hook 'c-mode-common-hook 'google-set-c-style)
 
 (setq company-backends (delete 'company-semantic company-backends))
-(add-to-list 'company-backends 'company-c-heaers)
+(add-to-list 'company-backends 'company-c-headers)
 
 ;; gtags
 (add-hook 'c-mode-hook 'helm-gtags-mode)

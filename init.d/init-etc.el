@@ -17,8 +17,8 @@
 ;; autoclose
 ;;(electric-pair-mode 0)
 ;; smartparens
-(smartparens-global-mode)
-(ad-disable-advice 'delete-backward-char 'before 'sp-delete-pair-advice)
+(smartparens-global-strict-mode)
+;; (ad-disable-advice 'delete-backward-char 'before 'sp-delete-pair-advice)
 
 
 (setq kill-whole-line t)
@@ -94,5 +94,20 @@
 (eval-after-load "flyspell"
   '(define-key flyspell-mode-map (kbd "C-;") nil))
 
+;; pair
+(require 'smartparens-config)
+(defun radian-enter-and-indent-sexp (&rest _ignored)
+  "Insert an extra newline after point, and reindent."
+  (newline)
+  (indent-according-to-mode)
+  (forward-line -1)
+  (indent-according-to-mode))
+
+(dolist (mode '(go-mode))
+  (sp-local-pair mode "{" nil :post-handlers
+                 '((radian-enter-and-indent-sexp "RET")
+                  (radian-enter-and-indent-sexp "<return>"))))
+
+(global-set-key (kbd "C-c d") 'sp-unwrap-sexp)
 
 (provide 'init-etc)
