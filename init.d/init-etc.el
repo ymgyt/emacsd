@@ -106,6 +106,9 @@
 (dolist (mode '(go-mode))
   (sp-local-pair mode "{" nil :post-handlers
                  '((radian-enter-and-indent-sexp "RET")
+                   (radian-enter-and-indent-sexp "<return>")))
+  (sp-local-pair mode "(" nil :post-handlers
+                 '((radian-enter-and-indent-sexp "RET")
                   (radian-enter-and-indent-sexp "<return>"))))
 
 (global-set-key (kbd "C-c d") 'sp-unwrap-sexp)
