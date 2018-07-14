@@ -26,6 +26,7 @@
     company
     company-c-headers
     company-go
+    dash-at-point
     direnv
     easy-kill
     expand-line
@@ -43,6 +44,7 @@
     helm-gtags
     helm-projectile
     helm-c-moccur
+    highlight-indent-guides
     markdown-mode
     magit
     magit-gh-pulls
@@ -55,6 +57,7 @@
     perspeen
     powerline
     projectile
+    protobuf-mode
     rainbow-delimiters
     shackle
     smartparens

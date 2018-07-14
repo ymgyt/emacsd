@@ -13,3 +13,4 @@
 (require 'init-etc)
 (require 'init-javascript)
 (require 'init-clang)
+(require 'init-protobuf)

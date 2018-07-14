@@ -109,8 +109,25 @@
                    (radian-enter-and-indent-sexp "<return>")))
   (sp-local-pair mode "(" nil :post-handlers
                  '((radian-enter-and-indent-sexp "RET")
-                  (radian-enter-and-indent-sexp "<return>"))))
+                   (radian-enter-and-indent-sexp "<return>"))))
+
+;; indent guide
+(setq highlight-indent-guides-responsive 'top)
+(setq highlight-indent-guides-delay 0)
+(setq highlight-indent-guides-method 'character)
+;; うまく機能してるか怪しい
+(defun my-highlighter (level responsive display)
+  (if (> 1 level)
+      nil
+    (highlight-indent-guides--highlighter-default level responsive display)))
+
+(setq highlight-indent-guides-highlighter-function 'my-highlighter)
+(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+(add-hook 'yaml-mode-hook 'highlight-indent-guides-mode)
 
 (global-set-key (kbd "C-c d") 'sp-unwrap-sexp)
+
+;; dash
+(global-set-key (kbd "C-c s") 'dash-at-point)
 
 (provide 'init-etc)
