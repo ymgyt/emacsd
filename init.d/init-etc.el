@@ -130,4 +130,19 @@
 ;; dash
 (global-set-key (kbd "C-c s") 'dash-at-point)
 
+;; font
+;; http://extra-vision.blogspot.com/2016/07/emacs.html
+;; 第一引数にはfont-specは利用できない
+(create-fontset-from-ascii-font "Ricty-13:weight=normal:slant=normal" nil "ricty")
+;; create-fontset-from-ascii-fontで fontset-rictyが作成されている
+;; 第二引数はunicodeの指定がよいらしい
+;; 第三引数にはfont-specが利用できる
+(set-fontset-font "fontset-ricty"
+                  'unicode
+                  (font-spec :family "Rictry" :size 13)
+                  nil
+                  'append)
+(add-to-list 'default-frame-alist '(font . "fontset-ricty"))
+(set-face-font 'default "fontset-ricty")
+
 (provide 'init-etc)

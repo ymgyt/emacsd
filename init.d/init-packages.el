@@ -63,6 +63,7 @@
     smartparens
     solarized-theme
     terraform-mode
+    toml-mode
     undo-tree
     which-key
     yaml-mode
