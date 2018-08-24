@@ -14,11 +14,10 @@
 (setq show-paren-mode-delay 0)
 (show-paren-mode t)
 
-;; autoclose
-;;(electric-pair-mode 0)
 ;; smartparens
 (smartparens-global-strict-mode)
-;; (ad-disable-advice 'delete-backward-char 'before 'sp-delete-pair-advice)
+;; toggle strict mode
+(define-key global-map (kbd "C-c s") 'smartparens-strict-mode)
 
 
 (setq kill-whole-line t)
@@ -116,19 +115,18 @@
 (setq highlight-indent-guides-delay 0)
 (setq highlight-indent-guides-method 'character)
 ;; うまく機能してるか怪しい
+;; yaml modeでずれる
 (defun my-highlighter (level responsive display)
   (if (> 1 level)
       nil
     (highlight-indent-guides--highlighter-default level responsive display)))
 
-(setq highlight-indent-guides-highlighter-function 'my-highlighter)
+;; (setq highlight-indent-guides-highlighter-function 'my-highlighter)
 (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
 (add-hook 'yaml-mode-hook 'highlight-indent-guides-mode)
 
 (global-set-key (kbd "C-c d") 'sp-unwrap-sexp)
 
-;; dash
-(global-set-key (kbd "C-c s") 'dash-at-point)
 
 ;; font
 ;; http://extra-vision.blogspot.com/2016/07/emacs.html

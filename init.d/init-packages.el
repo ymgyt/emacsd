@@ -26,8 +26,7 @@
     company
     company-c-headers
     company-go
-    dash-at-point
-    direnv
+    direnv 
     easy-kill
     expand-line
     expand-region
